@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08111f">
+  <title>ReferenceForge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">RF</span>
+      <div><strong>ReferenceForge</strong><small>Pesquisa e organização visual</small></div>
+    </div>
+    <button id="themeBtn" class="icon-btn" aria-label="Alternar tema">◐</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="eyebrow">CENTRAL DE REFERÊNCIAS</span>
+      <h1>Encontre imagens para qualquer projeto.</h1>
+      <p>Pesquise objetos, veículos, arquitetura, máquinas, personagens e muito mais em fontes de mídia aberta.</p>
+
+      <form id="searchForm" class="search-box">
+        <input id="query" type="search" placeholder="Ex.: Chevrolet Omega 1992, motor antigo, casa colonial..." autocomplete="off" required>
+        <button type="submit">Pesquisar</button>
+      </form>
+
+      <div class="filters">
+        <label>Fonte
+          <select id="source">
+            <option value="openverse">Openverse</option>
+            <option value="commons">Wikimedia Commons</option>
+          </select>
+        </label>
+        <label>Quantidade
+          <select id="pageSize">
+            <option value="20">20 imagens</option>
+            <option value="40" selected>40 imagens</option>
+            <option value="60">60 imagens</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="workspace-head">
+        <div>
+          <h2 id="resultsTitle">Resultados</h2>
+          <p id="status">Digite o que deseja pesquisar.</p>
+        </div>
+        <div class="actions">
+          <button id="selectAllBtn" class="secondary" disabled>Selecionar tudo</button>
+          <button id="exportBtn" disabled>Exportar catálogo</button>
+        </div>
+      </div>
+
+      <div id="categoryBar" class="category-bar" hidden>
+        <button class="chip active" data-category="all">Todas</button>
+        <button class="chip" data-category="principal">Principal</button>
+        <button class="chip" data-category="detalhes">Detalhes</button>
+        <button class="chip" data-category="interior">Interior</button>
+        <button class="chip" data-category="tecnico">Técnico</button>
+        <button class="chip" data-category="outros">Outros</button>
+      </div>
+
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon">⌕</div>
+        <h3>Sua pesquisa aparecerá aqui</h3>
+        <p>As imagens manterão informações de autor, fonte e licença.</p>
+      </div>
+
+      <div id="gallery" class="gallery" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <dialog id="previewDialog">
+    <button id="closeDialog" class="dialog-close" aria-label="Fechar">×</button>
+    <img id="previewImage" alt="Pré-visualização">
+    <div class="dialog-info">
+      <h3 id="previewTitle"></h3>
+      <p id="previewMeta"></p>
+      <a id="previewSource" target="_blank" rel="noopener">Abrir fonte original</a>
+    </div>
+  </dialog>
+
+  <footer>ReferenceForge • use as referências respeitando a licença indicada em cada item.</footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
