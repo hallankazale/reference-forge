@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08111f">
   <title>ReferenceForge</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
   <header class="topbar">
@@ -19,8 +19,8 @@
   <main>
     <section class="hero">
       <span class="eyebrow">CENTRAL DE REFERÊNCIAS</span>
-      <h1>Encontre imagens para qualquer projeto.</h1>
-      <p>Pesquise objetos, veículos, arquitetura, máquinas, personagens e muito mais em fontes de mídia aberta.</p>
+      <h1>Encontre referências para qualquer projeto.</h1>
+      <p>Pesquise imagens, catálogos e documentos em fontes abertas, organize os resultados e monte seu catálogo.</p>
 
       <form id="searchForm" class="search-box">
         <input id="query" type="search" placeholder="Ex.: Chevrolet Omega 1992, motor antigo, casa colonial..." autocomplete="off" required>
@@ -30,15 +30,16 @@
       <div class="filters">
         <label>Fonte
           <select id="source">
-            <option value="commons" selected>Wikimedia Commons</option>
-            <option value="openverse">Openverse (pode exigir autorização)</option>
+            <option value="all" selected>Todas as fontes</option>
+            <option value="commons">Wikimedia Commons</option>
+            <option value="archive">Internet Archive</option>
           </select>
         </label>
         <label>Quantidade
           <select id="pageSize">
-            <option value="20">20 imagens</option>
-            <option value="40" selected>40 imagens</option>
-            <option value="50">50 imagens</option>
+            <option value="20">20 resultados</option>
+            <option value="40" selected>40 resultados</option>
+            <option value="60">60 resultados</option>
           </select>
         </label>
       </div>
@@ -68,7 +69,7 @@
       <div id="emptyState" class="empty-state">
         <div class="empty-icon">⌕</div>
         <h3>Sua pesquisa aparecerá aqui</h3>
-        <p>As imagens manterão informações de autor, fonte e licença.</p>
+        <p>Os resultados mostrarão a fonte e as informações disponíveis.</p>
       </div>
 
       <div id="gallery" class="gallery" aria-live="polite"></div>
@@ -85,7 +86,7 @@
     </div>
   </dialog>
 
-  <footer>ReferenceForge • use as referências respeitando a licença indicada em cada item.</footer>
-  <script src="app.js" defer></script>
+  <footer>ReferenceForge • confirme a licença na fonte antes de reutilizar ou publicar qualquer material.</footer>
+  <script src="app.js?v=3" defer></script>
 </body>
 </html>
