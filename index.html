@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08111f">
   <title>ReferenceForge</title>
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
   <header class="topbar">
@@ -18,21 +18,22 @@
 
   <main>
     <section class="hero">
-      <span class="eyebrow">CENTRAL DE REFERÊNCIAS</span>
+      <span class="eyebrow">REFERENCE ENGINE V1</span>
       <h1>Encontre referências para qualquer projeto.</h1>
-      <p>Pesquise imagens, catálogos e documentos em fontes abertas, organize os resultados e monte seu catálogo.</p>
+      <p>O sistema identifica o tipo da pesquisa, escolhe as fontes adequadas, filtra resultados irrelevantes e organiza as referências.</p>
 
       <form id="searchForm" class="search-box">
-        <input id="query" type="search" placeholder="Ex.: Chevrolet Omega 1992, motor antigo, casa colonial..." autocomplete="off" required>
+        <input id="query" type="search" placeholder="Ex.: Chevrolet Omega 1992, boneco Superman, motor AP 2.0..." autocomplete="off" required>
         <button type="submit">Pesquisar</button>
       </form>
 
       <div class="filters">
         <label>Fonte
           <select id="source">
-            <option value="all" selected>Todas as fontes</option>
+            <option value="all" selected>Automática — recomendada</option>
             <option value="commons">Wikimedia Commons</option>
             <option value="archive">Internet Archive</option>
+            <option value="nasa">NASA Images</option>
           </select>
         </label>
         <label>Quantidade
@@ -43,6 +44,7 @@
           </select>
         </label>
       </div>
+      <p id="engineInfo" class="engine-info">🔎 O motor inteligente será ativado quando você pesquisar.</p>
     </section>
 
     <section class="workspace">
@@ -87,6 +89,6 @@
   </dialog>
 
   <footer>ReferenceForge • confirme a licença na fonte antes de reutilizar ou publicar qualquer material.</footer>
-  <script src="app.js?v=3" defer></script>
+  <script src="app.js?v=4" defer></script>
 </body>
 </html>
