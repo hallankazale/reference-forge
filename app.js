@@ -16,13 +16,26 @@ async function search(q){
   setLoading(true);state.items=[];state.selected.clear();
   try{
     const count=Number(els.pageSize.value);
-    state.items=els.source.value==='commons'?await searchCommons(q,count):await searchOpenverse(q,count);
+    if(els.source.value==='openverse'){
+      try{
+        state.items=await searchOpenverse(q,count);
+      }catch(openverseError){
+        console.warn('Openverse indisponível; usando Wikimedia Commons.',openverseError);
+        state.items=await searchCommons(q,count);
+        els.source.value='commons';
+        els.status.textContent='O Openverse está indisponível no momento. A busca foi concluída pelo Wikimedia Commons.';
+      }
+    }else{
+      state.items=await searchCommons(q,count);
+    }
     els.title.textContent=`Resultados para “${q}”`;
-    els.status.textContent=`${state.items.length} referências encontradas. Selecione as melhores para o catálogo.`;
+    if(!els.status.textContent.includes('Openverse está indisponível')){
+      els.status.textContent=`${state.items.length} referências encontradas. Selecione as melhores para o catálogo.`;
+    }
     els.empty.hidden=state.items.length>0;els.categoryBar.hidden=state.items.length===0;
     els.selectAll.disabled=state.items.length===0;updateExport();render();
   }catch(err){
-    console.error(err);els.status.textContent='Não foi possível concluir a busca. Tente outra fonte ou pesquise novamente.';els.empty.hidden=false;els.empty.querySelector('h3').textContent='Falha na pesquisa';els.empty.querySelector('p').textContent=err.message||'Verifique sua conexão.';
+    console.error(err);els.status.textContent='Não foi possível concluir a busca. Verifique sua conexão e tente novamente.';els.empty.hidden=false;els.empty.querySelector('h3').textContent='Falha na pesquisa';els.empty.querySelector('p').textContent=err.message||'Verifique sua conexão.';
   }finally{setLoading(false)}
 }
 
